@@ -11,10 +11,10 @@ export type action_bug = {
 export type action_ressource = {
     payload : {
         title: string,
-        url: string,
+        url?: string,
         description: string,
-        auteur: string,
-        category : string,
+        author: string,
+        category? : string,
         id : string
     },
     type: string
