@@ -1,6 +1,9 @@
 import React, {useState} from "react";
-import { StyleSheet, TextInput } from "react-native";
-import { useSelector } from 'react-redux';
+import { StyleSheet, TextInput, Button } from "react-native";
+import { useDispatch, useSelector } from 'react-redux';
+import { ressourceToAdd } from "../store/actions/ressources.actions";
+import { action_ressource } from "../store/types/actions.type";
+import crypto from 'crypto';
 
 const Form = (props: any) => {
   const [title, setTitle] = useState("");
@@ -9,13 +12,19 @@ const Form = (props: any) => {
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
 
-  const data = {
-      title: {title},
-      description: {description},
-      author: {author},
-      ...(category && {category: {category}}),
-      ...(url && {url: {url}}),
-  };
+  const dispatch = useDispatch();
+  const id = Math.random().toString();
+  
+  const data: action_ressource['payload'] = {
+      id,
+      title,
+      description,
+      author,
+      ...(category && {category}),
+      ...(url && {url}),
+    };
+    
+  const add = () => dispatch(ressourceToAdd(data as any))
 
   return (
     <>
@@ -52,10 +61,11 @@ const Form = (props: any) => {
               onChangeText={setUrl}
               placeholder='Url...'
               placeholderTextColor='white'
-              value={url} 
+              value={url}
             />
           </>
           }
+          <Button title='ADD' onPress={add} />
     </>
   );
 };
