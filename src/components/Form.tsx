@@ -4,7 +4,6 @@ import {
   TextInput,
   Text,
   StyleSheet,
-  ViewStyle,
   TextStyle,
   TextInputProps,
 } from 'react-native';
@@ -38,3 +37,20 @@ export default React.forwardRef<any, Props>(
     )
   }
 )
+
+const styles = StyleSheet.create({
+  container: {
+  },
+  label: {
+  },
+  inputContainer: {
+      fontSize: 24,
+      fontWeight: "600", 
+  },
+  textError: {
+    fontSize: 18,
+    fontWeight: "300",
+    textAlign: 'center',
+    padding: 20
+  },
+});
