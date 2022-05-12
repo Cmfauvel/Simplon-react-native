@@ -1,40 +1,82 @@
-import * as React from 'react';
-import {
-  View,
-  TextInput,
-  Text,
-  StyleSheet,
-  ViewStyle,
-  TextStyle,
-  TextInputProps,
-} from 'react-native';
-import { FieldError } from 'react-hook-form';
+import React, {useState} from "react";
+import { StyleSheet, TextInput } from "react-native";
+import { useSelector } from 'react-redux';
 
-interface Props extends TextInputProps {
-  name: string
-  label?: string
-  labelStyle?: TextStyle
-  error?: FieldError | undefined
-}
+const Form = (props: any) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [url, setUrl] = useState("");
+  const [author, setAuthor] = useState("");
+  const [category, setCategory] = useState("");
 
-export default React.forwardRef<any, Props>(
-  (props, ref): React.ReactElement => {
-    const { label, labelStyle, error, ...inputProps } = props
+  const data = {
+      title: {title},
+      description: {description},
+      author: {author},
+      ...(category && {category: {category}}),
+      ...(url && {url: {url}}),
+  };
 
-    return (
-      <View style={styles.container}>
-        {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
-        <TextInput
-          autoCapitalize="none"
-          ref={ref}
-          style={[
-            styles.inputContainer,
-            { borderColor: error ? '#fc6d47' : '#c0cbd3' },
-          ]}
-          {...inputProps}
-        />
-        <Text style={styles.textError}>{error && error.message}</Text>
-      </View>
-    )
+  return (
+    <>
+          <TextInput
+            style={styles.input}
+            onChangeText={setTitle}
+            placeholder='Titre...'
+            placeholderTextColor='white'
+            value={title} />
+          <TextInput
+            style={styles.areaInput}
+            onChangeText={setDescription}
+            placeholder='Description...'
+            placeholderTextColor='white'
+            value={description} />
+          <TextInput
+            style={styles.input}
+            onChangeText={setAuthor}
+            placeholder='Auteur...'
+            placeholderTextColor='white'
+            value={author}
+          />
+          {props.formType === 'ressource' &&
+          <>
+            <TextInput
+              style={styles.input}
+              onChangeText={setCategory}
+              placeholder='Catégorie...'
+              placeholderTextColor='white'
+              value={category}
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={setUrl}
+              placeholder='Url...'
+              placeholderTextColor='white'
+              value={url} 
+            />
+          </>
+          }
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
+  input: {
+    backgroundColor: "#99D2BD",
+    color: 'white',
+    width: 300,
+    height: 40,
+    margin: 12,
+    padding: 10,
+  },
+  areaInput: {
+    backgroundColor: "#99D2BD",
+    color: 'white',
+    width: 300,
+    height: 80,
+    margin: 12,
+    padding: 10,
   }
-)
+});
+
+export default Form;
