@@ -1,1 +1,0 @@
-# Simplon-react-native
