@@ -41,7 +41,7 @@ function MainContainer() {
               } else if (rn === Question) {
                 iconName = focused ? "help" : "help-outline";
               }
-              return <Ionicons name={iconName} size={size} color={color} />;
+              return <Ionicons name={iconName} size={size} color="#54A487" />;
             },
           })}
         >
