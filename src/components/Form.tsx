@@ -2,9 +2,8 @@ import React, {useState} from "react";
 import { StyleSheet, TextInput, Button } from "react-native";
 import { useDispatch } from 'react-redux';
 import { bugToAdd } from "../store/actions/bugs.actions";
+import { commentToAdd } from "../store/actions/comments.actions";
 import { ressourceToAdd } from "../store/actions/ressources.actions";
-import { action_ressource } from "../store/types/actions.type";
-import { IRootState } from '../store/types/state.type'
 
 const Form = (props: any) => {
   const [title, setTitle] = useState("");
@@ -37,16 +36,20 @@ const Form = (props: any) => {
 
   return (
     <>
-          <TextInput
+      {
+        props.formType === 'ressource' || props.formType === 'bug' &&
+        <TextInput
             style={styles.input}
             onChangeText={setTitle}
             placeholder='Titre...'
             placeholderTextColor='white'
             value={title} />
+      }
+          
           <TextInput
             style={styles.areaInput}
             onChangeText={setDescription}
-            placeholder='Description...'
+            placeholder={props.formType === 'comment' ? 'Commentaire...' : 'Description...'}
             placeholderTextColor='white'
             value={description} />
           <TextInput
