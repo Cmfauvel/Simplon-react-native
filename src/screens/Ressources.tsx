@@ -2,28 +2,24 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
-  TouchableOpacity,
   StyleSheet,
 } from "react-native";
 import { useSelector } from "react-redux";
 import Card from "../components/Card";
 import ListFooter from "../components/ListFooter";
-import ressourceReducer from "../store/reducers/ressources.reducer";
 import { action_ressource } from "../store/types/actions.type";
 
 const Resources = () => {
   const resources = useSelector(
     (state: any) => state.ressourceReducer.ressource
   );
-  const [maxCount, setMaxCount] = React.useState<number>(5);
-  console.log(resources);
+  const [maxCount, setMaxCount] = useState<number>(5);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
         <h1>Ressources</h1>
       </Text>
-      {resources.map((resource: action_ressource["payload"]) => {
+      {resources.slice(0, maxCount).map((resource: action_ressource["payload"]) => {
         return (
           <Card
             key={resource.id}
@@ -35,7 +31,7 @@ const Resources = () => {
           ></Card>
         );
       })}
-      <ListFooter count={resources.length} visibleCount={resources.length > 5 ? maxCount : resources.length} showMore={async () => setMaxCount(maxCount + 5)}/>
+      <ListFooter count={resources.length} visibleCount={resources.length > 5 ? maxCount : resources.length} showMore={() => setMaxCount(maxCount + 5)}/>
     </View>
   );
 };
