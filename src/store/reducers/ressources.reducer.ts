@@ -3,7 +3,37 @@ import { action_ressource } from '../types/actions.type'
 const initialState : { ressource: Array<action_ressource["payload"]> }= {
     ressource : [
         {
-            id: '45',
+            id: '46',
+            title: 'title',
+            description: 'description',
+            author: 'auteur',
+            categories: ['categorie'],
+            url: 'url.fr'
+        },
+        {
+            id: '67',
+            title: 'title1',
+            description: 'description1',
+            author: 'auteur1',
+            categories: ['categorie1'],
+            url: 'url.fr1'
+        },{
+            id: '41',
+            title: 'title',
+            description: 'description',
+            author: 'auteur',
+            categories: ['categorie'],
+            url: 'url.fr'
+        },
+        {
+            id: '61',
+            title: 'title1',
+            description: 'description1',
+            author: 'auteur1',
+            categories: ['categorie1'],
+            url: 'url.fr1'
+        },{
+            id: '42',
             title: 'title',
             description: 'description',
             author: 'auteur',
