@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
 import { useDispatch } from "react-redux";
 import { bugToAdd } from "../store/actions/bugs.actions";
 import { commentToAdd } from "../store/actions/comments.actions";
@@ -40,7 +46,10 @@ const Form = (props: any) => {
   const addCategory = () => {};
 
   return (
-    <>
+    <View style={styles.container}>
+      <Text style={styles.title}>
+        <h1>Ajouter un {props.formType}</h1>
+      </Text>
       {props.formType === "ressource" ||
         (props.formType === "bug" && (
           <TextInput
@@ -86,33 +95,47 @@ const Form = (props: any) => {
           />
         </>
       )}
-      <TouchableOpacity onPress={add}>
-        <FeatherIcon
-          size="large"
-          color="#54A487"
-          name="arrow-right"
-        ></FeatherIcon>
-      </TouchableOpacity>
-    </>
+        <TouchableOpacity style={styles.button} onPress={add}>
+          <FeatherIcon
+            size="large"
+            color="#54A487"
+            name="arrow-right"
+          ></FeatherIcon>
+        </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    width: "80%",
+    marginLeft: "10%",
+  },
+  title: {
+    color: "#54A487",
+  },
   input: {
     backgroundColor: "#99D2BD",
     color: "white",
     width: 300,
     height: 40,
-    margin: 12,
+    marginBottom: 5,
     padding: 10,
+    borderRadius: 10,
   },
   areaInput: {
     backgroundColor: "#99D2BD",
     color: "white",
     width: 300,
     height: 80,
-    margin: 12,
+    marginBottom: 5,
     padding: 10,
+    borderRadius: 10,
+  },
+  button: {
+    marginTop: 10,
+    display: "flex",
+    justifyContent: "flex-end",
   },
 });
 
