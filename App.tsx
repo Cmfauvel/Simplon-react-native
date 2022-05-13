@@ -8,6 +8,7 @@ import Home from './src/screens/Home';
 import indexReducer from './src/store/reducers/index.reducer';
 import Resources from './src/screens/Ressources';
 import Bugs from './src/screens/Bugs';
+import SearchBar from './src/components/SearchBar';
 
 const store = createStore(indexReducer)
 
@@ -15,7 +16,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        {/* <Home /> */}
+        <SearchBar/>
+        <Home />
         <Resources />
       <StatusBar hidden />
     </View>

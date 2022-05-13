@@ -21,20 +21,10 @@ const Home = () => {
           <Text
             style={styles.textStyle}
           >
-            LES RESSOURCES
+            BIENVENUE SIMPLONIENS!
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.thirdPartBackgroundColor}
-          onPress={() => {}}
-        >
-          <Text
-            style={styles.textStyle}
-          >
-            HELP SECTION
-          </Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
