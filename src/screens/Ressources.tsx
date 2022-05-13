@@ -16,6 +16,7 @@ const Resources = () => {
   const resources = useSelector(
     (state: any) => state.ressourceReducer.ressource
   );
+  const [maxCount, setMaxCount] = React.useState<number>(5);
   console.log(resources);
   return (
     <View style={styles.container}>
@@ -34,7 +35,7 @@ const Resources = () => {
           ></Card>
         );
       })}
-      <ListFooter count={resources.length} visibleCount={3} />
+      <ListFooter count={resources.length} visibleCount={resources.length > 5 ? maxCount : resources.length} showMore={async () => setMaxCount(maxCount + 5)}/>
     </View>
   );
 };

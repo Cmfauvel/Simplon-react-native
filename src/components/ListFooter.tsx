@@ -4,20 +4,24 @@ import { FeatherIcon } from "./Icon";
 import Resources from '../screens/Ressources';
 
 interface ListFooterProps {
-  count?: number;
-  visibleCount?: number;
+  count: number;
+  visibleCount: number;
+  showMore: () => {};
 }
 
 const ListFooter: React.FC<ListFooterProps> = (props: ListFooterProps) => {
     const showMore = () => {
-        Alert.alert('Left button pressed')
+        /* Alert.alert('Left button pressed' */
+        //console.log(previousCount)
+        return props.showMore();
+        //return previousCount + 5;
     }
   return (
     <View style={styles.container}>
       <Text style={styles.countText}>
         {props.visibleCount} of {props.count} results
       </Text>
-        <Text style={styles.button} onPress={showMore}>Show More</Text>
+        <Text style={styles.button} onPress={() => showMore}>Show More</Text>
     </View>
   );
 };
