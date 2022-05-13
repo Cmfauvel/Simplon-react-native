@@ -9,16 +9,10 @@ import {
 
 const Home = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <View
         style={{ flexDirection: "column", justifyContent: "space-between" }}
       >
-        <TouchableOpacity
-          style={styles.firstPartBackgroundColor}
-          onPress={() => {}}
-        >
-          <Text></Text>
-        </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.secondPartBackgroundColor}
@@ -41,23 +35,14 @@ const Home = () => {
             HELP SECTION
           </Text>
         </TouchableOpacity>
-
-        <TouchableOpacity style={styles.nav} onPress={() => {}}>
-          <Text></Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  firstPartBackgroundColor: {
-    backgroundColor: "#99D2BD",
-    paddingVertical: 20,
-    borderRadius: 5,
-    alignnotes: "center",
-    width: 325,
-    height: 56,
-    textAlign: "center",
+  container: {
+    justifyContent: "center",
+    alignItems: "center"
   },
   secondPartBackgroundColor: {
     backgroundColor: "#54A487",
@@ -84,15 +69,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     paddingTop: 18,
-  },
-  nav: {
-    height: 70,
-    backgroundColor: "#54A487",
-    paddingVertical: 20,
-    borderRadius: 5,
-    alignnotes: "center",
-    marginTop: 70,
-    textAlign: "center",
   },
 });
 export default Home;
