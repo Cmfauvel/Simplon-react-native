@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { StyleSheet, TextInput, Button } from "react-native";
+import { StyleSheet, TextInput, Button, NativeEventEmitter } from "react-native";
 import { useDispatch } from 'react-redux';
 import { bugToAdd } from "../store/actions/bugs.actions";
 import { commentToAdd } from "../store/actions/comments.actions";
@@ -12,6 +12,8 @@ const Form = (props: any) => {
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
 
+  let categories: any = [];
+
   const dispatch = useDispatch();
   const id = Math.random().toString();
   
@@ -20,7 +22,7 @@ const Form = (props: any) => {
       ...(title.length > 0 && {title}),
       description,
       author,
-      ...(category.length > 0 && {category}),
+      ...(categories.length > 0 && {categories}),
       ...(url.length > 0 && {url}),
     };
 
@@ -34,6 +36,9 @@ const Form = (props: any) => {
     }
   }
 
+  const addCategory = () => {}
+  
+  console.log('categories: ', categories);
   return (
     <>
       {
@@ -45,7 +50,6 @@ const Form = (props: any) => {
             placeholderTextColor='white'
             value={title} />
       }
-          
           <TextInput
             style={styles.areaInput}
             onChangeText={setDescription}
@@ -64,7 +68,10 @@ const Form = (props: any) => {
             <TextInput
               style={styles.input}
               onChangeText={setCategory}
-              placeholder='Catégorie...'
+              onKeyPress={() => {
+                console.log('category: ', category);
+              }}
+              placeholder='Catégories...'
               placeholderTextColor='white'
               value={category}
             />
