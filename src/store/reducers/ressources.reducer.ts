@@ -47,6 +47,37 @@ const initialState : { ressource: Array<action_ressource["payload"]> }= {
             author: 'auteur1',
             categories: ['categorie1'],
             url: 'url.fr1'
+        },{
+            id: '1',
+            title: 'title1',
+            description: 'description1',
+            author: 'auteur1',
+            categories: ['categorie1'],
+            url: 'url.fr1'
+        },
+        {
+            id: '2',
+            title: 'title1',
+            description: 'description1',
+            author: 'auteur1',
+            categories: ['categorie1'],
+            url: 'url.fr1'
+        },
+        {
+            id: '3',
+            title: 'title1',
+            description: 'description1',
+            author: 'auteur1',
+            categories: ['categorie1'],
+            url: 'url.fr1'
+        },
+        {
+            id: '4',
+            title: 'title1',
+            description: 'description1',
+            author: 'auteur1',
+            categories: ['categorie1'],
+            url: 'url.fr1'
         },
     ]
 }
