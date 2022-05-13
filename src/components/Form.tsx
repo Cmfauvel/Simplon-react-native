@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, Button } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { ressourceToAdd } from "../store/actions/ressources.actions";
 import { action_ressource } from "../store/types/actions.type";
-import crypto from 'crypto';
+import { IRootState } from '../store/types/state.type'
 
 const Form = (props: any) => {
   const [title, setTitle] = useState("");
@@ -15,7 +15,7 @@ const Form = (props: any) => {
   const dispatch = useDispatch();
   const id = Math.random().toString();
   
-  const data: action_ressource['payload'] = {
+  const data: action_ressource['payload'] =  {
       id,
       title,
       description,
@@ -25,7 +25,9 @@ const Form = (props: any) => {
     };
     
   const add = () => dispatch(ressourceToAdd(data as any))
-
+  const ressources = useSelector((state : IRootState ) => state.ressourceReducer?.ressources)
+  console.log(ressources);
+  
   return (
     <>
           <TextInput
