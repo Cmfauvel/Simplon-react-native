@@ -1,7 +1,24 @@
 import { action_ressource } from '../types/actions.type'
 
 const initialState : { ressource: Array<action_ressource["payload"]> }= {
-    ressource : []
+    ressource : [
+        {
+            id: '45',
+            title: 'title',
+            description: 'description',
+            author: 'auteur',
+            categories: ['categorie'],
+            url: 'url.fr'
+        },
+        {
+            id: '66',
+            title: 'title1',
+            description: 'description1',
+            author: 'auteur1',
+            categories: ['categorie1'],
+            url: 'url.fr1'
+        },
+    ]
 }
 
 const ressourceReducer = ( state = initialState, action: action_ressource) => {

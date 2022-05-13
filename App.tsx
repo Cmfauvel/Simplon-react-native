@@ -6,6 +6,7 @@ import { createStore } from "redux";
 import Card from './src/components/Card';
 import Home from './src/screens/Home';
 import indexReducer from './src/store/reducers/index.reducer';
+import Resources from './src/screens/Ressources';
 
 const store = createStore(indexReducer)
 
@@ -13,8 +14,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <Home />
-      {/* <Card title='Test' paragraph='Blablabla' tags={['cat1']} author='John Doe' url="http://" ></Card> */}
+        {/* <Home /> */}
+        <Resources />
       <StatusBar hidden />
     </View>
     </Provider>
