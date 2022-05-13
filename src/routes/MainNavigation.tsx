@@ -12,10 +12,10 @@ import BugListingScreen from "../screens/BugLisningScreen";
 
 //Screen names
 const homeName = "Home";
-const Question = "Chercher une solution";
-const addBug = "Poser une question";
-const addRessource = "Ajouter une ressource";
-const Ressources = "ressources";
+const Question = "Solutions";
+const addBug = "+ Question";
+const addRessource = "+ Ressource";
+const Ressources = "Ressources";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +45,7 @@ function MainContainer() {
             },
           })}
         >
-          <Tab.Screen name={homeName} component={Home} />
+          <Tab.Screen options={{headerShown: false}} name={homeName} component={Home} />
           <Tab.Screen name={addRessource} component={AddRessource} />
           <Tab.Screen name={Ressources} component={RoussourceLisning} />
           <Tab.Screen name={addBug} component={AddBug} />
