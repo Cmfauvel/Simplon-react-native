@@ -1,11 +1,12 @@
 import { StatusBar } from "expo-status-bar";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Form from "../components/Form";
 
 export default function AddRessource() {
   return (
     <View style={styles.container}>
-      <Text>add ressource!</Text>
-
+      <Form formType="ressource"/>
       <StatusBar style="auto" />
     </View>
   );

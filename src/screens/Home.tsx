@@ -35,8 +35,8 @@ const Home = () => {
             HELP SECTION
           </Text>
         </TouchableOpacity>
-      </View>
-    </View>
+     </View>
+     </View>
   );
 };
 const styles = StyleSheet.create({

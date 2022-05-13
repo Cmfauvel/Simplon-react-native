@@ -1,21 +1,49 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+} from "react-native";
+import { useSelector } from "react-redux";
+import Card from "../components/Card";
+import ListFooter from "../components/ListFooter";
+import { action_ressource } from "../store/types/actions.type";
 
-export default function BugListingScreen() {
+const Bugs = () => {
+  const bugs = useSelector((state: any) => state.bugsReducer.bugs);
+  const [maxCount, setMaxCount] = React.useState<number>(5);
   return (
     <View style={styles.container}>
-      <Text>bug listinng!</Text>
-
-      <StatusBar style="auto" />
+      <Text style={styles.title}>
+        <h1>Bugs</h1>
+      </Text>
+      {(bugs || []).slice(0, maxCount).map((bug: action_ressource["payload"]) => {
+        return (
+          <Card
+            key={bug.id}
+            title={bug.title}
+            description={bug.description}
+            author={bug.author}
+            categories={bug.categories}
+          ></Card>
+        );
+      })}
+      <ListFooter
+        count={(bugs || []).length}
+        visibleCount={(bugs || []).length > 5 ? maxCount : (bugs || []).length}
+        showMore={async () => setMaxCount(maxCount + 5)}
+      />
     </View>
   );
-}
+};
+
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  container: {},
+  title: {
+    color: "#54A487",
+    width: "80%",
+    marginLeft: "10%",
   },
 });
+export default Bugs;
