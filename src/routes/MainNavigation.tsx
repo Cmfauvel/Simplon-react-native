@@ -5,13 +5,17 @@ import AddBug from "../screens/AddBug";
 import AddRessource from "../screens/AddRessource";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import RoussourceLisning from "../screens/RoussourceLisning";
+import BugListingScreen from "../screens/BugLisningScreen";
 
 // Screens
 
 //Screen names
 const homeName = "Home";
+const Question = "poser votre question";
 const addBug = "Trouver une solution";
 const addRessource = "Ajouter une ressource";
+const Ressources = "ressources";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +35,11 @@ function MainContainer() {
               } else if (rn === addBug) {
                 iconName = focused ? "list" : "list-outline";
               } else if (rn === addRessource) {
-                iconName = focused ? "settings" : "settings-outline";
+                iconName = focused ? "share-social" : "share-social-outline";
+              } else if (rn === Ressources) {
+                iconName = focused ? "wallet" : "wallet-outline";
+              } else if (rn === Question) {
+                iconName = focused ? "help" : "help-outline";
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
@@ -39,8 +47,9 @@ function MainContainer() {
         >
           <Tab.Screen name={homeName} component={Home} />
           <Tab.Screen name={addRessource} component={AddRessource} />
-
+          <Tab.Screen name={Ressources} component={RoussourceLisning} />
           <Tab.Screen name={addBug} component={AddBug} />
+          <Tab.Screen name={Question} component={BugListingScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </>

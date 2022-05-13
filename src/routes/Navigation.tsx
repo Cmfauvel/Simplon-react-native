@@ -12,7 +12,7 @@ export type RouteParams = {
   Question: undefined;
   "Trouver une solution": undefined;
   "Ajouter une ressource": undefined;
-  Roussources: undefined;
+  Ressources: undefined;
 };
 const Stack = createNativeStackNavigator<RouteParams>();
 
@@ -22,7 +22,7 @@ const Navigation = (): React.ReactElement => {
     <Stack.Navigator>
       <Stack.Group>
         <Stack.Screen name="Home" component={MainContainer} />
-        <Stack.Screen name="Roussources" component={RoussourceLisning} />
+        <Stack.Screen name="Ressources" component={RoussourceLisning} />
         <Stack.Screen name="Question" component={BugListingScreen} />
       </Stack.Group>
     </Stack.Navigator>

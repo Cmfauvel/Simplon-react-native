@@ -15,7 +15,7 @@ export default function Home() {
         <Button
           color="#54A487"
           title="Les ressources"
-          onPress={() => navigation.navigate("Roussources")}
+          onPress={() => navigation.navigate("Ressources")}
         />
       </View>
       <View style={styles.button}>
