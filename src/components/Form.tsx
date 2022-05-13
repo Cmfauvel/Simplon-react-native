@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import { StyleSheet, TextInput, Button } from "react-native";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { bugToAdd } from "../store/actions/bugs.actions";
 import { ressourceToAdd } from "../store/actions/ressources.actions";
-import { action_ressource } from "../store/types/actions.type";
-import crypto from 'crypto';
 
 const Form = (props: any) => {
   const [title, setTitle] = useState("");
@@ -15,16 +14,24 @@ const Form = (props: any) => {
   const dispatch = useDispatch();
   const id = Math.random().toString();
   
-  const data: action_ressource['payload'] = {
+  const data: any = {
       id,
-      title,
+      ...(title.length > 0 && {title}),
       description,
       author,
       ...(category.length > 0 && {category}),
       ...(url.length > 0 && {url}),
     };
-    
-  const add = () => dispatch(ressourceToAdd(data as any))
+
+  const add = () => {
+    if (props.formType === 'ressource') {
+      dispatch(ressourceToAdd(data as any))
+    } else if (props.formType === 'bug') {
+      dispatch(bugToAdd(data as any))
+    } else if (props.formType === 'comment') {
+      dispatch(commentToAdd(data as any))
+    }
+  }
 
   return (
     <>

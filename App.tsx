@@ -7,10 +7,10 @@ import indexReducer from './src/store/reducers/index.reducer';
 
 const store = createStore(indexReducer)
 
+
 export default function App() {
   return (
     <Provider store={store}>
-      <Form formType='ressource' />
       <View style={styles.container}>
         <Text>Open up App.tsx to start working on your app!</Text>
         <StatusBar style="auto" />
