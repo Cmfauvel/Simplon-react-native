@@ -20,8 +20,8 @@ const Form = (props: any) => {
       title,
       description,
       author,
-      ...(category && {category}),
-      ...(url && {url}),
+      ...(category.length > 0 && {category}),
+      ...(url.length > 0 && {url}),
     };
     
   const add = () => dispatch(ressourceToAdd(data as any))
