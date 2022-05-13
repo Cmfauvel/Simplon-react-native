@@ -18,7 +18,7 @@ export default function App() {
       <View style={styles.container}>
         <SearchBar/>
         <Home />
-        <Resources />
+        {/* <Resources /> */}
       <StatusBar hidden />
     </View>
     </Provider>
@@ -33,4 +33,3 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
   },
 });
-
