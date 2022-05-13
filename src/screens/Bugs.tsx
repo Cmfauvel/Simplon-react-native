@@ -17,7 +17,7 @@ const Bugs = () => {
       <Text style={styles.title}>
         <h1>Bugs</h1>
       </Text>
-      {bugs.map((bug: action_ressource["payload"]) => {
+      {(bugs || []).slice(0, maxCount).map((bug: action_ressource["payload"]) => {
         return (
           <Card
             key={bug.id}
@@ -29,8 +29,8 @@ const Bugs = () => {
         );
       })}
       <ListFooter
-        count={bugs.length}
-        visibleCount={bugs.length > 5 ? maxCount : bugs.length}
+        count={(bugs || []).length}
+        visibleCount={(bugs || []).length > 5 ? maxCount : (bugs || []).length}
         showMore={async () => setMaxCount(maxCount + 5)}
       />
     </View>
