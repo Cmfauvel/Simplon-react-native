@@ -19,7 +19,16 @@ const bugsReducer = ( state = initialState, action: action_bug) => {
             })
             return {
                 ...state
-            }            ;
+            }    
+        case "UPDATE_BUG":
+            state.bugs.forEach((bug ,index: number) => {
+                if(action.payload.id === bug.id){
+                    state.bugs.splice(index, 1,bug)
+                }
+            })
+            return{
+                ...state
+            }
         default:    
             return {
                 ...state

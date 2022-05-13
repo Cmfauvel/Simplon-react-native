@@ -9,3 +9,9 @@ export const ressourceToDelete = (id : action_ressource['payload']['id']) => ({
     type: 'DELETE_RESSOURCE',
     payload: id
 })
+
+export const ressourceToUpdate = (ressource : action_ressource) => ({
+
+    type: 'UPDATE_RESSOURCE',
+    payload: ressource
+})

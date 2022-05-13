@@ -19,3 +19,14 @@ export type action_ressource = {
     },
     type: string
 }
+
+export type action_comment = {
+    payload : {
+        description: string,
+        author: string,
+        commentType: string,
+        idAssociation : Number,
+        id: number
+    },
+    type? : string
+}

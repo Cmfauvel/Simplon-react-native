@@ -3,6 +3,8 @@ import { StyleSheet, TextInput, Button } from "react-native";
 import { useDispatch } from 'react-redux';
 import { bugToAdd } from "../store/actions/bugs.actions";
 import { ressourceToAdd } from "../store/actions/ressources.actions";
+import { action_ressource } from "../store/types/actions.type";
+import { IRootState } from '../store/types/state.type'
 
 const Form = (props: any) => {
   const [title, setTitle] = useState("");
