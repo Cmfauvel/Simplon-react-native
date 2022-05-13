@@ -1,27 +1,27 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Button, Alert } from "react-native";
+import { StyleSheet, View, Text, BackHandler } from "react-native";
 import { FeatherIcon } from "./Icon";
 import Resources from '../screens/Ressources';
 
 interface ListFooterProps {
   count: number;
   visibleCount: number;
-  showMore: () => {};
+  showMore: any;
 }
 
-const ListFooter: React.FC<ListFooterProps> = (props: ListFooterProps) => {
-    const showMore = () => {
-        /* Alert.alert('Left button pressed' */
-        //console.log(previousCount)
-        return props.showMore();
-        //return previousCount + 5;
-    }
+const ListFooter: React.FC<ListFooterProps> = (props: any) => {
+  const [count, setCount] = React.useState(props.count)
+  console.log(props.count);
+  
   return (
     <View style={styles.container}>
       <Text style={styles.countText}>
         {props.visibleCount} of {props.count} results
       </Text>
-        <Text style={styles.button} onPress={() => showMore}>Show More</Text>
+        <Text style={styles.button} onPress={() => {
+          setCount(props.count + 5)
+          props.showMore(count)
+        }}>Show More</Text>
     </View>
   );
 };
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   countText: {
     color: "#54A487",
     opacity: 0.6,
-    padding: 5
+    padding: 5,
   },
 });
 
