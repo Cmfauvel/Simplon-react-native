@@ -2,7 +2,7 @@ export type action_bug = {
     payload : {
         title: string,
         description: string,
-        auteur: string,
+        author: string,
         id : string
     },
     type: string
@@ -14,7 +14,7 @@ export type action_ressource = {
         url?: string,
         description: string,
         author: string,
-        category? : string,
+        categories : string[],
         id : string
     },
     type: string

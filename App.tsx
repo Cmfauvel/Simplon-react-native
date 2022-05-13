@@ -7,6 +7,8 @@ import Form from './src/components/Form';
 import Card from './src/components/Card';
 import Home from './src/screens/Home';
 import indexReducer from './src/store/reducers/index.reducer';
+import Resources from './src/screens/Ressources';
+import Bugs from './src/screens/Bugs';
 
 const store = createStore(indexReducer)
 
@@ -16,8 +18,8 @@ export default function App() {
     <Provider store={store}>
       <Form formType='ressource'/>
       <View style={styles.container}>
-        <Home />
-      {/* <Card title='Test' paragraph='Blablabla' tags={['cat1']} author='John Doe' url="http://" ></Card> */}
+        {/* <Home /> */}
+        <Resources />
       <StatusBar hidden />
     </View>
     </Provider>

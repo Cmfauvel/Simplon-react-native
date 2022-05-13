@@ -11,10 +11,11 @@ import { FeatherIcon } from "./Icon";
 
 interface CardProps {
   title: string;
-  paragraph?: string;
-  tags?: string[];
+  description?: string;
+  categories?: string[];
   url?: string;
   author?: string;
+  id?: string;
 }
 
 const Card: React.FC<CardProps> = (props: CardProps) => {
@@ -42,10 +43,10 @@ const Card: React.FC<CardProps> = (props: CardProps) => {
           <View style={styles.containerTextModal}>
             <Text style={styles.textModal}>
               <h1>{props.title}</h1>
-              <p>{props.paragraph}</p>
+              <p>{props.description}</p>
               <p>{props.author}</p>
               { props.url && <p>{props.url}</p>}
-              {props.tags?.map((tag) => {
+              {props.categories?.map((tag) => {
                 return (
                   <Text key={tag} style={styles.tag}>
                     {tag}, ' '
@@ -72,8 +73,8 @@ const Card: React.FC<CardProps> = (props: CardProps) => {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.paragraph}>{props.paragraph}</Text>
-      {props.tags?.map((tag) => {
+      <Text style={styles.description}>{props.description}</Text>
+      {props.categories?.map((tag) => {
         return (
           <Text key={tag} style={styles.tag}>
             #{tag}
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#FFFFFF",
   },
-  paragraph: {
+  description: {
     fontSize: 18,
     fontWeight: "300",
     color: "#FFFFFF",

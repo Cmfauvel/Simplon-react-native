@@ -7,7 +7,7 @@ const initialState : { ressources: Array<action_ressource["payload"]> }= {
             title: 'title',
             description: 'description',
             author: 'auteur',
-            category: 'categorie',
+            categories: ['categorie'],
             url: 'url.fr'
         },
         {
@@ -15,7 +15,7 @@ const initialState : { ressources: Array<action_ressource["payload"]> }= {
             title: 'title1',
             description: 'description1',
             author: 'auteur1',
-            category: 'categorie1',
+            categories: ['categorie1'],
             url: 'url.fr1'
         },
     ]
