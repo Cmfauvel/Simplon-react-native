@@ -11,7 +11,6 @@ export interface IconProps {
   size: IconSizeProps['iconSizes'];
   name: string;
   color: string;
-  onPress?: () => void;
 }
 
 export const IconSizes = {

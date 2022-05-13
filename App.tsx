@@ -12,7 +12,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-      <Card title='Test' paragraph='Blablabla' tags={['cat1']} ></Card>
+      <Card title='Test' paragraph='Blablabla' tags={['cat1']} author='John Doe' url="http://" ></Card>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar hidden />
     </View>

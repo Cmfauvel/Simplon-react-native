@@ -1,66 +1,109 @@
 import * as React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Modal, Alert } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  Alert,
+} from "react-native";
 import { FeatherIcon } from "./Icon";
-import { useModal } from "../state/useModal";
 
 interface CardProps {
   title: string;
   paragraph?: string;
   tags?: string[];
+  url?: string;
+  author?: string;
 }
 
-
-const Card: React.FC<CardProps> = ({ title, paragraph, tags }) => {
-  const { isShown, toggle } = useModal();
-  console.log(isShown)
+const Card: React.FC<CardProps> = (props: CardProps) => {
+  
+  const [isShown, setIsShown] = React.useState<boolean>(false);
+  console.log(isShown);
 
   return (
     <View style={[styles.card, styles.shadowProp]}>
       <Modal
-            animationType = {"slide"}
-            transparent={false}
-            visible={isShown}
-            onRequestClose={() => {
-              Alert.alert('Modal has now been closed.');
-            }}>
-              <TouchableOpacity
-              onPress={() => toggle(isShown)}>
-              <FeatherIcon size="large" color="white" name="x" />
-          </TouchableOpacity>  
-              <Text style = { styles.textModal }>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Maecenas eget tempus augue, a convallis velit.</Text>
-                  <Text 
-                style={styles.closeText}
-                onPress={() => { console.log("click")
-                  toggle}}>Close Modal</Text>
-          </Modal>
+        animationType={"slide"}
+        transparent={false}
+        visible={isShown}
+        onRequestClose={() => {
+          Alert.alert("Modal has now been closed.");
+        }}
+      >
+        <View style={styles.modal}>
+          <TouchableOpacity
+            style={styles.buttonClose}
+            onPress={() => setIsShown(false)}
+          >
+            <FeatherIcon size="large" color="white" name="x" />
+          </TouchableOpacity>
+          <View style={styles.containerTextModal}>
+            <Text style={styles.textModal}>
+              <h1>{props.title}</h1>
+              <p>{props.paragraph}</p>
+              <p>{props.author}</p>
+              { props.url && <p>{props.url}</p>}
+              {props.tags?.map((tag) => {
+                return (
+                  <Text key={tag} style={styles.tag}>
+                    {tag}, ' '
+                  </Text>
+                );
+              })}
+            </Text>
+            <Text style={[styles.textModal, styles.commentsBloc]}>
+            <h2>Commentaires</h2>
+            </Text>
+          </View>
+        </View>
+      </Modal>
       <View style={styles.headerCard}>
-        <Text style={styles.title}>{title}</Text>
-      
-      <TouchableOpacity
-              onPress={() => { console.log("click") 
-              toggle(!isShown)}}>
-              <FeatherIcon size="large" color="white" name="more-vertical" />
-          </TouchableOpacity>  
+        <Text style={styles.title}>{props.title}</Text>
+
+        <TouchableOpacity
+          onPress={() => {
+            console.log("click", isShown);
+            setIsShown(true);
+          }}
+        >
+          <FeatherIcon size="large" color="white" name="more-vertical" />
+        </TouchableOpacity>
       </View>
-      
-      <Text style={styles.paragraph}>x{paragraph}</Text>
-      {
-        tags?.map(tag => {
-          return <Text style={styles.tag}>#{ tag }</Text>
-        })
-      }
+
+      <Text style={styles.paragraph}>{props.paragraph}</Text>
+      {props.tags?.map((tag) => {
+        return (
+          <Text key={tag} style={styles.tag}>
+            #{tag}
+          </Text>
+        );
+      })}
     </View>
   );
 };
 
-
-
 const styles = StyleSheet.create({
+  modal: {
+    backgroundColor: "#54A487",
+    height: "100vh",
+  },
+  buttonClose: {
+    position: "absolute",
+    zIndex: 1000,
+    right: 10,
+    top: 10,
+  },
+  commentsBloc: {
+    width: "90%",
+    marginLeft: "5%",
+    borderTopColor: "white",
+    borderTopWidth: 1
+  },
   card: {
-    width: '80%',
-    marginLeft: '10%',
+    width: "80%",
+    marginLeft: "10%",
     borderRadius: 5,
     marginTop: 10,
     flexDirection: "column",
@@ -75,8 +118,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   shadowProp: {
-    shadowColor: '#000',
-    shadowOffset: {width: -2, height: 4},
+    shadowColor: "#000",
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 5,
   },
@@ -93,12 +136,14 @@ const styles = StyleSheet.create({
   tag: {
     color: "#FFFFFF",
   },
-  textModal: {
-    fontFamily: "Montserrat"
+  containerTextModal: {
+    display: "flex",
   },
-  closeText: {
-
-  }
+  textModal: {
+    color: "white",
+    padding: 20,
+    marginTop: 30,
+  },
 });
 
 export default Card;
