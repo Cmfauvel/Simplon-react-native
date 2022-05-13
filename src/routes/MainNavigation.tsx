@@ -46,10 +46,10 @@ function MainContainer() {
           })}
         >
           <Tab.Screen options={{headerShown: false}} name={homeName} component={Home} />
-          <Tab.Screen name={addRessource} component={AddRessource} />
-          <Tab.Screen name={Ressources} component={RoussourceLisning} />
-          <Tab.Screen name={addBug} component={AddBug} />
-          <Tab.Screen name={Question} component={BugListingScreen} />
+          <Tab.Screen options={{headerShown: false}} name={addRessource} component={AddRessource} />
+          <Tab.Screen options={{headerShown: false}} name={Ressources} component={RoussourceLisning} />
+          <Tab.Screen options={{headerShown: false}} name={addBug} component={AddBug} />
+          <Tab.Screen options={{headerShown: false}} name={Question} component={BugListingScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </>
